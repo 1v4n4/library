@@ -1,0 +1,20 @@
+{
+  "name": "library",
+  "version": "1.0.0",
+  "description": "basic library app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1v4n4/library.git"
+  },
+  "author": "1v4n4",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/1v4n4/library/issues"
+  },
+  "homepage": "https://github.com/1v4n4/library#readme"
+}
