@@ -45,44 +45,65 @@ function changeStatus(arr, value) {
   }
 }
 
+function clearInput(form) {
+  form[0].value = '';
+  form[1].value = '';
+  form[2].value= '';
+}
+
+function bookCheck(title, author, arr) {
+  for(var i = 0; i<arr.length; i++) {
+    if(arr[i].title == title && arr[i].author == author) {
+      return true;
+    }
+  }
+}
+
 bookForm.addEventListener("submit", (e) => {
   e.preventDefault()
 
 console.log("Form submitted")
 
-const newTitle = bookForm[0].value;
-  const newAuthor= bookForm[1].value;
+  const newTitle = bookForm[0].value;
+  const newAuthor = bookForm[1].value;
   const newPages = bookForm[2].value;
   
-  let confirmation = "true";
+  let confirmation = true;
 
   if (!newTitle) {
     alert("You have to fill all data");
-    confirmation = "false";
+    confirmation = false;
   } 
 
   if (!newAuthor) {
     alert("You have to fill all data");
-    confirmation = "false";
+    confirmation = false;
   }
 
   if (!newPages) {
     alert("You have to fill all data");
-    confirmation = "false";
+    confirmation = false;
   }
 
-  if (confirmation == "false") {
+  if (bookCheck(newTitle, newAuthor, myLibrary) == true) {
+    alert("Book with same title by same author already exists");
+    confirmation = false;
+  }
+
+  if (confirmation == false) {
     console.log(myLibrary)
     return false;
-  }
+      }
+
   else {
   
-  const newBook = new Book(newTitle, newAuthor, newPages);
-  bookToLibrary(newBook);
-  bookToDom(newBook);
-  console.log(newBook);
-  console.log(myLibrary) }
-  
+    const newBook = new Book(newTitle, newAuthor, newPages);
+    bookToLibrary(newBook);
+    bookToDom(newBook);
+    console.log(newBook);
+    console.log(myLibrary) 
+    clearInput(bookForm)
+  }
 });
 
 
