@@ -4,7 +4,7 @@ The library allows users to create a list of books, by entering their title, aut
 
 ## Live Demo
 
-[Live Demo Link] (https://1v4n4.github.io/library/)
+[Live Demo Link](https://1v4n4.github.io/library/)
 
 ## Built With
 
