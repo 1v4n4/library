@@ -1,7 +1,6 @@
 const bookForm = document.getElementById('bookForm');
 const tbody = document.querySelector('tbody');
 const table = document.querySelector("table");
-
 let myLibrary = []
 
 function Book(title, author, pages) {
@@ -21,8 +20,8 @@ function bookToDom(book) {
       <td>${book.title}</td>
       <td>${book.author}</td>
       <td>${book.pages}</td>
-      <td>${book.read}</td>
-      <td><button class="button btn btn-secondary">Change status</button></td>
+      <td class="reads">${book.read}</td>
+      <td><button class="changeStatusBtn btn btn-secondary">Change status</button></td>
       <td><button class="deleteBtn btn btn-danger">Delete book</button></td>
     </tr>  
   `;
@@ -36,6 +35,14 @@ function deleteBook(arr, value) {
     }
   }
   return a;
+}
+
+function changeStatus(arr, value) {
+  for(var i = 0; i<arr.length; i++) {
+    if(arr[i].title == value) {
+      arr[i].read == true ? arr[i].read = false : arr[i].read = true;
+    }
+  }
 }
 
 bookForm.addEventListener("submit", (e) => {
@@ -83,10 +90,12 @@ const newTitle = bookForm[0].value;
 table.addEventListener("click", (e) => {
   e.preventDefault()
 
-  if (e.target.classList.contains("deleteBtn")) {
-      const btn = e.target;
+  const btn = e.target;
     var removeData = btn.closest("tr").firstElementChild.textContent;
     console.log(removeData)
+
+  if (btn.classList.contains("deleteBtn")) {
+      
 
     deleteBook(myLibrary, removeData)
 
@@ -96,13 +105,20 @@ table.addEventListener("click", (e) => {
     console.log(removed)
     console.log("Book deleted from DOM");
     console.log(btn)
-    
-
 
   }
+  else 
+    if (btn.classList.contains("changeStatusBtn")) {
+      console.log("Status changed");
 
+      changeStatus(myLibrary, removeData)
+      console.log(myLibrary)
 
+      let changed = btn.parentElement.previousElementSibling;
+      console.log(changed)
 
+      changed.textContent == 'false' ? changed.innerHTML = 'true' : changed.innerHTML = 'false'
+    }
 
 });
 
