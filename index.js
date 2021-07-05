@@ -1,5 +1,6 @@
-const bookFormEl = document.getElementById('bookForm');
-const tbodyEl = document.querySelector('tbody');
+const bookForm = document.getElementById('bookForm');
+const tbody = document.querySelector('tbody');
+const table = document.querySelector("table");
 
 let myLibrary = []
 
@@ -15,19 +16,27 @@ function bookToLibrary(book) {
 }
 
 function bookToDom(book) {
-  tbodyEl.innerHTML += `
+  tbody.innerHTML += `
     <tr>
       <td>${book.title}</td>
       <td>${book.author}</td>
       <td>${book.pages}</td>
       <td>${book.read}</td>
       <td><button class="button btn btn-secondary">Change status</button></td>
-      <td><button class="deleteBtn btn btn-secondary">Delete book</button></td>
+      <td><button class="deleteBtn btn btn-danger">Delete book</button></td>
     </tr>  
   `;
 }
 
-
+function deleteBook(arr, value) {
+  var a = []
+  for(var i = 0; i<arr.length; i++) {
+    if(arr[i].title == value) {
+      a = arr.splice(i, 1)
+    }
+  }
+  return a;
+}
 
 bookForm.addEventListener("submit", (e) => {
   e.preventDefault()
@@ -61,7 +70,7 @@ const newTitle = bookForm[0].value;
   }
   else {
   
-  const newBook = new Book(newAuthor, newTitle, newPages);
+  const newBook = new Book(newTitle, newAuthor, newPages);
   bookToLibrary(newBook);
   bookToDom(newBook);
   console.log(newBook);
@@ -70,6 +79,32 @@ const newTitle = bookForm[0].value;
 });
 
 
+
+table.addEventListener("click", (e) => {
+  e.preventDefault()
+
+  if (e.target.classList.contains("deleteBtn")) {
+      const btn = e.target;
+    var removeData = btn.closest("tr").firstElementChild.textContent;
+    console.log(removeData)
+
+    deleteBook(myLibrary, removeData)
+
+    console.log(myLibrary)
+
+    let removed = btn.closest("tr").remove();
+    console.log(removed)
+    console.log("Book deleted from DOM");
+    console.log(btn)
+    
+
+
+  }
+
+
+
+
+});
 
 /*function deleteBook {
 
