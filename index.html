@@ -1,1 +1,114 @@
-<h1>Hello world</h1>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="main.css">
+  <link rel="shortcut icon" href="#">
+  <title>Library</title>
+</head>
+<body>
+
+  <h1>Library</h1>
+
+  <table class="table caption-top">
+    <caption>List of books</caption>
+    <thead>
+      <tr>
+        <!--<th scope="col">#</th>-->
+        <th scope="col">Title</th>
+        <th scope="col">Author</th>
+        <th scope="col">Number of pages</th>
+        <th scope="col">Read</th>
+        <th scope="col">Change status</th>
+        <th scope="col">Delete book</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      
+        <!--<th scope="row">1</th>-->
+        
+    </tbody>
+  </table>
+
+  <!-- Button trigger modal -->
+ <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Add to a library
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Fill in all data</h5>
+       <!--- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div> 
+      <form class="modal-body" id="bookForm">
+        <div class="input-group mb-3">
+          <span class="input-group-text" >Title</span>
+          <input type="text" class="form-control finput" id="title" aria-label="Sizing example input" aria-describedby="title">
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text" >Autor</span>
+          <input type="text" class="form-control finput" id="author" aria-label="Sizing example input" aria-describedby="author">
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Number of pages</span>
+          <input type="number" class="form-control finput" id="pages" aria-label="Sizing example input" aria-describedby="pages">
+        </div>
+      </form>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" value="submit" id='submit' class="btn btn-primary" id="add-btn">Add book</button>
+      </div>-->
+      <form id="bookForm">
+        
+    <input type="text" id="title" placeholder="Title">
+    <input type="text" id="author" placeholder="Author">
+    <input type="number" id="pages"  placeholder="Number of pages">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <button type="submit" class="btn btn-secondary">Submit</button>
+  </form>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+  <!-- <form class="add-form" id="add-form">
+
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="title">Title</span>
+      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="title">
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="author">Autor</span>
+      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="author">
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="pages">Number of pages</span>
+      <input type="number" class="form-control" aria-label="Sizing example input" aria-describedby="pages">
+    </div>
+  </form> 
+
+  <button class="btn btn-secondary" id="add-btn">Add book</button>-->
+
+
+
+
+
+  <th scope="col"><button class="btn btn-light" id="status-btn">Change status</button></th>
+  <th scope="col"><button class="btn btn-warning" id="delete-btn">Delete book</button></th>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+  <script src="./index.js"></script>
+</body>
