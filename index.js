@@ -23,6 +23,9 @@ function bookToLibrary(book) {
 function libraryToStorage() {
   window.localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
 }
+function booksToDom() {
+myLibrary.forEach(book => bookToDom(book));
+}
 
 function bookToDom(book) {
   tbody.innerHTML += `
@@ -70,6 +73,7 @@ function bookCheck(title, author, arr) {
     }
   }
 }
+document.addEventListener('DOMContentLoaded', booksToDom)
 
 // eslint-disable-next-line
 bookForm.addEventListener('submit', (e) => {
