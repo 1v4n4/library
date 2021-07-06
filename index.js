@@ -8,7 +8,6 @@ if (localStorage.getItem('myLibrary') !== null) {
   myLibrary = JSON.parse(window.localStorage.getItem('myLibrary'));
 }
 
-
 function Book(title, author, pages) {
   this.title = title;
   this.author = author;
@@ -23,9 +22,6 @@ function bookToLibrary(book) {
 function libraryToStorage() {
   window.localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
 }
-function booksToDom() {
-myLibrary.forEach(book => bookToDom(book));
-}
 
 function bookToDom(book) {
   tbody.innerHTML += `
@@ -38,6 +34,11 @@ function bookToDom(book) {
       <td><button class="deleteBtn btn btn-danger">Delete book</button></td>
     </tr>
   `;
+}
+
+function booksToDom() {
+  // eslint-disable-next-line
+  myLibrary.forEach(book => bookToDom(book));
 }
 
 function deleteBook(arr, value) {
@@ -73,7 +74,7 @@ function bookCheck(title, author, arr) {
     }
   }
 }
-document.addEventListener('DOMContentLoaded', booksToDom)
+document.addEventListener('DOMContentLoaded', booksToDom);
 
 // eslint-disable-next-line
 bookForm.addEventListener('submit', (e) => {
@@ -102,7 +103,7 @@ bookForm.addEventListener('submit', (e) => {
   const newBook = new Book(newTitle, newAuthor, newPages);
   bookToLibrary(newBook);
   bookToDom(newBook);
-  libraryToStorage()
+  libraryToStorage();
   clearInput(bookForm);
 });
 
@@ -115,13 +116,13 @@ table.addEventListener('click', (e) => {
   if (btn.classList.contains('deleteBtn')) {
     deleteBook(myLibrary, removeData);
     btn.closest('tr').remove();
-    libraryToStorage()
+    libraryToStorage();
   } else
   if (btn.classList.contains('changeStatusBtn')) {
     changeStatus(myLibrary, removeData);
     const changed = btn.parentElement.previousElementSibling;
     // eslint-disable-next-line
-      changed.textContent === 'false' ? changed.innerHTML = 'true' : changed.innerHTML = 'false';
-      libraryToStorage()
-    }
+    changed.textContent === 'false' ? changed.innerHTML = 'true' : changed.innerHTML = 'false';
+    libraryToStorage();
+  }
 });
