@@ -2,7 +2,12 @@ const bookForm = document.getElementById('bookForm');
 const tbody = document.querySelector('tbody');
 const table = document.querySelector('table');
 
-const myLibrary = [];
+let myLibrary = [];
+
+if (localStorage.getItem('myLibrary') !== null) {
+  myLibrary = JSON.parse(window.localStorage.getItem('myLibrary'));
+}
+
 
 function Book(title, author, pages) {
   this.title = title;
@@ -13,6 +18,10 @@ function Book(title, author, pages) {
 
 function bookToLibrary(book) {
   myLibrary.push(book);
+}
+
+function libraryToStorage() {
+  window.localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
 }
 
 function bookToDom(book) {
@@ -89,6 +98,7 @@ bookForm.addEventListener('submit', (e) => {
   const newBook = new Book(newTitle, newAuthor, newPages);
   bookToLibrary(newBook);
   bookToDom(newBook);
+  libraryToStorage()
   clearInput(bookForm);
 });
 
@@ -101,11 +111,13 @@ table.addEventListener('click', (e) => {
   if (btn.classList.contains('deleteBtn')) {
     deleteBook(myLibrary, removeData);
     btn.closest('tr').remove();
+    libraryToStorage()
   } else
   if (btn.classList.contains('changeStatusBtn')) {
     changeStatus(myLibrary, removeData);
     const changed = btn.parentElement.previousElementSibling;
     // eslint-disable-next-line
       changed.textContent === 'false' ? changed.innerHTML = 'true' : changed.innerHTML = 'false';
-  }
+      libraryToStorage()
+    }
 });
